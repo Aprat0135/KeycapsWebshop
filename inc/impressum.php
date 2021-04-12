@@ -4,7 +4,7 @@ session_start();
 <!doctype html>
 <html>
     <?php
-        include 'head.html';
+        include 'inc/head.html';
     ?>
     <body>
         <header>
@@ -13,7 +13,7 @@ session_start();
 	        ?>
 	    </header>
         <?php
-            include 'darkmode-switch.html';
+            include 'inc/darkmode-switch.html';
         ?>
         <main>
             <h1>impressum.php</h1>
