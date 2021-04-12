@@ -1,11 +1,13 @@
 <head>
     <title>KeycapsWebshop</title>
+    <link rel='stylesheet' type='text/css' href="css/stylesheet.css">
+    <link rel='stylesheet' type='text/css' href='css/darkmode-switch.css'>
     <script>
         if (sessionStorage.length < 1) {
-            sessionStorage.setItem("theme", "css/light.css");
+            sessionStorage.setItem('theme', 'css/dark.css');
         }
-        let theme = sessionStorage.getItem("theme");
-            document.write('<link rel="stylesheet" href="' + theme + '">');
+        let theme = sessionStorage.getItem('theme');
+        document.write("<link rel='stylesheet' href='" + theme + "'>");
     </script>
     <meta charset='utf-8' lang='de'>
 </head>

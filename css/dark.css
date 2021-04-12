@@ -1,0 +1,40 @@
+/* Darkmode config dark */
+:root {
+	--darker-background-color: rgb(35, 35, 35);
+	--lighter-background-color: rgb(41, 41, 41);
+	--text-color: white;
+	--primary-color: #490300;
+	--primary-color-hover: maroon;
+	--secondary-color: rgb(180, 0, 0);
+}
+/* Darkmode config End */
+
+
+body {
+    background-color: var(--darker-background-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--primary-color);
+}
+
+nav {
+    color: var(--primary-color);
+}
+
+nav a {
+    background-color: var(--primary-color);
+}
+
+nav a:hover {
+    background-color: var(--primary-color-hover);
+}
+
+a {
+    color: var(--text-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+}

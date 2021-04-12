@@ -1,0 +1,32 @@
+header {
+    margin: -10px;
+    margin-bottom: 10px;
+}
+
+nav {
+    text-align: center;
+    overflow: auto;
+}
+
+nav a {
+    float: left;
+    width: 25%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+body {
+    font-family: Verdana;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+}
