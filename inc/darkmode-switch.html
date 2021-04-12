@@ -1,0 +1,32 @@
+<script>
+    function switchTheme() {
+        let theme = document.getElementsByTagName('link')[0];
+        if (theme.getAttribute('href') == 'css/light.css') {
+            theme.setAttribute('href', 'css/dark.css');
+            sessionStorage.setItem('theme', theme.getAttribute('href'));
+        } else {
+            theme.setAttribute('href', 'css/light.css');
+            sessionStorage.setItem('theme', theme.getAttribute('href'));
+        }
+    }
+
+    function checkTheBox() {
+        let inputs = document.getElementById('switchCheckbox');
+        let theme = document.getElementsByTagName('link')[0];
+        console.log(sessionStorage);
+        if (theme.getAttribute('href') == 'css/light.css') {
+            theme.getAttribute('href');
+            inputs.checked = false;
+        }
+        else {
+            inputs.checked = true;
+        }
+    }
+</script>
+
+<style onload='checkTheBox()'></style>
+<label class='darkmode-switch'>
+    <input id='switchCheckbox' class='switch-input' type='checkbox' onClick='switchTheme()'/>
+    <span class='switch-label' data-on='On' data-off='Off'></span>
+    <span class='switch-handle'></span>
+</label>

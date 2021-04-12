@@ -1,0 +1,11 @@
+<head>
+    <title>KeycapsWebshop</title>
+    <script>
+        if (sessionStorage.length < 1) {
+            sessionStorage.setItem("theme", "css/light.css");
+        }
+        let theme = sessionStorage.getItem("theme");
+            document.write('<link rel="stylesheet" href="' + theme + '">');
+    </script>
+    <meta charset='utf-8' lang='de'>
+</head>
