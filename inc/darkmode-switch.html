@@ -1,21 +1,19 @@
 <script>
+    var theme = document.getElementById('themeID');
     function switchTheme() {
-        let theme = document.getElementsByTagName('link')[0];
         if (theme.getAttribute('href') == 'css/light.css') {
             theme.setAttribute('href', 'css/dark.css');
-            sessionStorage.setItem('theme', theme.getAttribute('href'));
+            sessionStorage.setItem('themeLink', theme.getAttribute('href'));
         } else {
             theme.setAttribute('href', 'css/light.css');
-            sessionStorage.setItem('theme', theme.getAttribute('href'));
+            sessionStorage.setItem('themeLink', theme.getAttribute('href'));
         }
     }
 
     function checkTheBox() {
         let inputs = document.getElementById('switchCheckbox');
-        let theme = document.getElementsByTagName('link')[0];
         console.log(sessionStorage);
         if (theme.getAttribute('href') == 'css/light.css') {
-            theme.getAttribute('href');
             inputs.checked = false;
         }
         else {

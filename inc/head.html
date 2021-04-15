@@ -1,13 +1,17 @@
 <head>
     <title>KeycapsWebshop</title>
+    <link rel="shortcut icon" type="image/png" href="resources/favicon.ico"/>
     <link rel='stylesheet' type='text/css' href="css/stylesheet.css">
     <link rel='stylesheet' type='text/css' href='css/darkmode-switch.css'>
+    <link id='themeID' rel='stylesheet' type='text/css' href='css/dark.css'>
     <script>
+        // if no theme is set, set dark theme
         if (sessionStorage.length < 1) {
-            sessionStorage.setItem('theme', 'css/dark.css');
+            sessionStorage.setItem('themeLink', 'css/dark.css');
         }
-        let theme = sessionStorage.getItem('theme');
-        document.write("<link rel='stylesheet' href='" + theme + "'>");
+        if (sessionStorage.getItem('themeLink') != null) {
+            document.getElementById('themeID').setAttribute('href', sessionStorage.getItem('themeLink'));
+        }
     </script>
     <meta charset='utf-8' lang='de'>
 </head>
