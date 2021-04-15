@@ -1,4 +1,4 @@
-/* Darkmode config light */
+/* Darkmode config light *//*
 :root {
 	--darker-background-color: rgb(220, 220, 220);
 	--lighter-background-color: rgb(230, 230, 230);
@@ -7,7 +7,17 @@
 	--primary-color-hover: maroon;
 	--secondary-color: #490300;
 }
-/* Darkmode config End */
+*//* Darkmode config End */
+/* Experimental Colorscheme config */
+:root {
+	--darker-background-color: rgb(220, 220, 220);
+	--lighter-background-color: rgb(230, 230, 230);
+	--text-color: black;
+	--primary-color: #142120;
+	--primary-color-hover: #17152a;
+	--secondary-color: #24344c;
+}
+/* Experimental Colorscheme config End */
 
 
 body {
