@@ -10,9 +10,9 @@
 *//* Darkmode config End */
 /* Experimental Colorscheme config */
 :root {
-	--darker-background-color: rgb(220, 220, 220);
+	--darker-background-color: black;
 	--lighter-background-color: rgb(230, 230, 230);
-	--text-color: black;
+	--text-color: white;
 	--primary-color: #142120;
 	--primary-color-hover: #17152a;
 	--secondary-color: #24344c;
