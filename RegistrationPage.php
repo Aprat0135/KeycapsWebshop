@@ -14,9 +14,10 @@ session_start();
 	    </header>
         <?php
             include 'inc/darkmode-switch.html';
+            //include 'inc/register.php';
         ?>
         <main>
-            <h1>Index</h1>
+            <h1>RegistrationPage</h1>
         </main>
         <?php
             include 'inc/footer.html';
