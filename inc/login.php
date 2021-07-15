@@ -9,7 +9,8 @@
 					$db_user="root";
 					$db_password="";
 					$db_name="KeycapsWebshop_DB";
-					$password_hash = $_POST['password'];
+
+					$password_entered = $_POST['password'];
 
 					$sql = new mysqli($db_host, $db_user, $db_password, $db_name);
 					if ($sql->connect_error) {
@@ -28,7 +29,7 @@
 						echo "Error: unable to return query. ";
 					}
 						
-					if($password_hash == $returned_password_hash){
+					if(crypt($password_entered, $returned_password_hash) == $returned_password_hash)){
 						$_SESSION['username'] = $user;
 						echo "You are logged in as ". $user . "!";
 					} else {
@@ -40,6 +41,15 @@
 			} else {
 				include 'inc/loginForm.html';
 			}
+		}
+
+		function better_crypt($input, $rounds = 10) {
+    		$salt = "";
+			$salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
+			for ($i=0; $i < 22; $i++) {
+				$salt .= $salt_chars[array_rand($salt_chars)];
+			}
+			return crypt($input, sprintf('$2y$%02d$', $rounds) . $salt);
 		}
 	?>
 </div>
