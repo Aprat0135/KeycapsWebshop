@@ -29,27 +29,21 @@
 						echo "Error: unable to return query. ";
 					}
 						
-					if(crypt($password_entered, $returned_password_hash) == $returned_password_hash)){
+					if(crypt($password_entered, $returned_password_hash) == $returned_password_hash) {
 						$_SESSION['username'] = $user;
 						echo "You are logged in as ". $user . "!";
+						echo "Du bist eingeloggt als ". $user . "!";
 					} else {
-						echo "Wrong username or password. Perhaps check your spelling. ";
+						echo "Wrong username or password. ";
+						echo "Falscher Benutzername oder Passwort. ";
 					}	
 				} else {
 					echo "You have to enter your password. ";
+					echo "Du musst dein Passwort eingeben. ";
 				}
 			} else {
 				include 'inc/loginForm.html';
 			}
-		}
-
-		function better_crypt($input, $rounds = 10) {
-    		$salt = "";
-			$salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
-			for ($i=0; $i < 22; $i++) {
-				$salt .= $salt_chars[array_rand($salt_chars)];
-			}
-			return crypt($input, sprintf('$2y$%02d$', $rounds) . $salt);
 		}
 	?>
 </div>
