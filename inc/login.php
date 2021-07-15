@@ -5,41 +5,37 @@
 		} else {
 			if (!empty($_POST['username'])){
 				if (!empty($_POST['password'])){
-					$server="localhost";
-					$user="root";
-					$password="";
-					$db="KeycapsWebshop_DB";
-						
-					$pw = /*sha1(*/$_POST['password']/*)*/;
-						
-					$sql = new mysqli($server, $user, $password, $db);
+					$db_host="localhost";
+					$db_user="root";
+					$db_password="";
+					$db_name="KeycapsWebshop_DB";
+					$password_hash = $_POST['password'];
+
+					$sql = new mysqli($db_host, $db_user, $db_password, $db_name);
 					if ($sql->connect_error) {
-						die("Es ist ein Fehler mit der Datenbank aufgetreten: ". $sql->connect_error);
+						die("Error: unable to connect to database. ". $sql->connect_error);
 					}
 						
-					$nutzer = $sql->real_escape_string(strip_tags(filter_input(INPUT_POST, "username")));
-						
-					$erg = "SELECT username, password FROM userdata WHERE username = '" . $nutzer ."'";
-					$aus = $sql->query($erg);
+					$user = $sql->real_escape_string(strip_tags(filter_input(INPUT_POST, "username")));
+					$query = "SELECT username, password FROM userdata WHERE username = '" . $user ."'";
+					$query_return = $sql->query($query);
 						
 					$sql->close();
 						
-					$dbPassword = "";
-					if ($aus) {
-						$passaus = $aus->fetch_array();
-						$dbPassword = $passaus['password'];
+					if ($query_return) {
+						$returned_password_hash = $query_return->fetch_array()['password'];
 					} else {
-						echo "Es ist ein Fehler beim Abfragen aufgetreten!";
+						echo "Error: unable to return query. ";
 					}
 						
-					if($pw == $dbPassword){
-						$_SESSION['username'] = $nutzer;
-						echo "Du bist als ". $nutzer . " eingeloggt!";
+					if($password_hash == $returned_password_hash){
+						$_SESSION['username'] = $user;
+						echo "You are logged in as ". $user . "!";
 					} else {
-						echo "Eingegebene Daten stimmen nicht überein!";
+						echo "Wrong username or password. Perhaps check your spelling. ";
 					}	
 				} else {
-					echo "Sie müssen ein Passwort eingeben!";
+					echo "You have to enter your password. ";
 				}
 			} else {
 				include 'inc/loginForm.html';
