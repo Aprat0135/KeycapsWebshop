@@ -20,17 +20,22 @@
 				}
 						
 				$user = $sql->real_escape_string(strip_tags(filter_input(INPUT_POST, "username")));
-				$query = "SELECT username FROM userdata WHERE username = '" . $user ."'";
+				$password_raw = $sql->real_escape_string(strip_tags(filter_input(INPUT_POST, "password")));
+				$password_hash = better_crypt($password_raw);
+
+				$query = "SELECT username FROM userdata WHERE username = '" . $user ."';";
 				$query_return = $sql->query($query);
-						
-				$sql->close();
 						
 				if ($query_return) {
 					echo "Username is already in use, choose another. ";
 					echo "Benutzername ist bereits vergeben, wähle einen anderen. ";
 				} else {
 					//write new user into database
-				}	
+					$query = "INSERT INTO userdata (username, password) VALUES ($user, $password_hash);";
+					$query_return = $sql->query($query);
+				}
+				$sql->close();
+
 			} else {
 				echo "You have to enter your password into both fields. ";
                 echo "Du musst dein Passwort in beiden Feldern eintragen. ";
@@ -39,6 +44,8 @@
 			include 'inc/registerForm.html';
 		}
 
+		// Original PHP code by Chirp Internet: www.chirpinternet.eu
+		// Please acknowledge use of this code by including this header.
 		function better_crypt($input, $rounds = 10) {
     		$salt = "";
 			$salt_chars = array_merge(range('A','Z'), range('a','z'), range(0,9));
